@@ -1,0 +1,9 @@
+prefix=
+exec_prefix=${prefix}
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+
+Name: GNOME-python
+Description: Python bindings for GNOME libraries
+Version: 2.25.3

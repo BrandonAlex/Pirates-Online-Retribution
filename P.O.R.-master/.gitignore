@@ -1,0 +1,16 @@
+*.pyc
+*.DS_Store
+*.so
+*.dylib
+
+logs/
+screenshots/
+src/
+cache/
+
+# Database
+*.db
+
+# LiClipse
+*.pydevproject
+*.project

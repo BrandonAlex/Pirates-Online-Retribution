@@ -1,0 +1,626 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-interface IImageTool
+  (in-module "Gtk")
+  (c-name "GtkIImageTool")
+  (gtype-id "GTK_TYPE_IIMAGE_TOOL")
+  (vtable "GtkIImageToolClass")
+)
+
+(define-object ImageNav
+  (in-module "Gtk")
+  (parent "GtkWindow")
+  (c-name "GtkImageNav")
+  (gtype-id "GTK_TYPE_IMAGE_NAV")
+)
+
+(define-object ImageScrollWin
+  (in-module "Gtk")
+  (parent "GtkTable")
+  (c-name "GtkImageScrollWin")
+  (gtype-id "GTK_TYPE_IMAGE_SCROLL_WIN")
+)
+
+(define-object ImageToolDragger
+  (in-module "Gtk")
+  (parent "GObject")
+  (c-name "GtkImageToolDragger")
+  (gtype-id "GTK_TYPE_IMAGE_TOOL_DRAGGER")
+  (implements "GtkIImageTool")
+)
+
+(define-object ImageToolSelector
+  (in-module "Gtk")
+  (parent "GObject")
+  (c-name "GtkImageToolSelector")
+  (gtype-id "GTK_TYPE_IMAGE_TOOL_SELECTOR")
+  (implements "GtkIImageTool")
+)
+
+(define-object ImageView
+  (in-module "Gtk")
+  (parent "GtkWidget")
+  (c-name "GtkImageView")
+  (gtype-id "GTK_TYPE_IMAGE_VIEW")
+)
+
+(define-object AnimView
+  (in-module "Gtk")
+  (parent "GtkImageView")
+  (c-name "GtkAnimView")
+  (gtype-id "GTK_TYPE_ANIM_VIEW")
+)
+
+;; boxes
+
+;; This is the weird looparounds you have to use to give c-structs
+;; constructors.
+(define-function pixbuf_draw_opts_new
+  (c-name "gdk_pixbuf_draw_opts_new")
+  (is-constructor-of "GdkPixbufDrawOpts")
+  (return-type "GdkPixbufDrawOpts")
+  )
+
+(define-function pixbuf_draw_cache_new
+  (c-name "gdk_pixbuf_draw_cache_new")
+  (is-constructor-of "GdkPixbufDrawCache")
+  (return-type "GdkPixbufDrawCache")
+  )
+
+(define-boxed PixbufDrawOpts
+  (in-module "Gtk")
+  (c-name "GdkPixbufDrawOpts")
+  (gtype-id "GDK_TYPE_PIXBUF_DRAW_OPTS")
+  (fields
+   '("gdouble" "zoom")
+   '("GdkRectangle" "zoom_rect")
+   '("int" "widget_x")
+   '("int" "widget_y")
+   '("GdkInterpType" "interp")
+   '("GdkPixbuf*" "pixbuf")
+   '("int" "check_color1")
+   '("int" "check_color2")
+   )
+  )
+
+(define-boxed PixbufDrawCache
+  (in-module "Gtk")
+  (c-name "GdkPixbufDrawCache")
+  (gtype-id "GDK_TYPE_PIXBUF_DRAW_CACHE")
+  (fields
+   '("GdkPixbuf*" "last_pixbuf")
+   '("GdkPixbufDrawOpts" "old")
+   '("int" "check_size")
+   )
+  )
+
+(define-method draw
+  (of-object "GdkPixbufDrawCache")
+  (c-name "gdk_pixbuf_draw_cache_draw")
+  (return-type "none")
+  (parameters
+   '("GdkPixbufDrawOpts*" "draw_opts")
+   '("GdkDrawable*" "drawable")
+   )
+  )
+
+(define-method invalidate
+  (of-object "GdkPixbufDrawCache")
+  (c-name "gdk_pixbuf_draw_cache_invalidate")
+  (return-type "none")
+  )
+
+;; Enumerations and flags ...
+
+(define-enum ImageTransp
+  (in-module "Gtk")
+  (c-name "GtkImageTransp")
+  (gtype-id "GTK_TYPE_IMAGE_TRANSP")
+  (values
+    '("color" "GTK_IMAGE_TRANSP_COLOR")
+    '("background" "GTK_IMAGE_TRANSP_BACKGROUND")
+    '("grid" "GTK_IMAGE_TRANSP_GRID")
+  )
+)
+
+(define-enum PixbufDrawMethod
+  (in-module "Gdk")
+  (c-name "GdkPixbufDrawMethod")
+  (gtype-id "GDK_TYPE_PIXBUF_DRAW_METHOD")
+  (values
+   '("contains", "GDK_PIXBUF_DRAW_METHOD_CONTAINS")
+   '("scale", "GDK_PIXBUF_DRAW_METHOD_SCALE")
+   '("scroll", "GDK_PIXBUF_DRAW_METHOD_SCROLL")
+   )
+  )
+
+;; From gtkanimview.h
+
+(define-function gtk_anim_view_get_type
+  (c-name "gtk_anim_view_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_anim_view_new
+  (c-name "gtk_anim_view_new")
+  (is-constructor-of "GtkAnimView")
+  (return-type "GtkWidget*")
+)
+
+(define-method get_anim
+  (of-object "GtkAnimView")
+  (c-name "gtk_anim_view_get_anim")
+  (return-type "GdkPixbufAnimation*")
+)
+
+(define-method set_anim
+  (of-object "GtkAnimView")
+  (c-name "gtk_anim_view_set_anim")
+  (return-type "none")
+  (parameters
+    '("GdkPixbufAnimation*" "anim" (null-ok))
+  )
+)
+
+(define-method set_is_playing
+  (of-object "GtkAnimView")
+  (c-name "gtk_anim_view_set_is_playing")
+  (return-type "none")
+  (parameters
+    '("gboolean" "playing")
+  )
+)
+
+(define-method get_is_playing
+  (of-object "GtkAnimView")
+  (c-name "gtk_anim_view_get_is_playing")
+  (return-type "gboolean")
+)
+
+(define-method step
+  (of-object "GtkAnimView")
+  (c-name "gtk_anim_view_step")
+  (return-type "none")
+)
+
+
+
+;; From gtkiimagetool.h
+
+(define-function gtk_iimage_tool_get_type
+  (c-name "gtk_iimage_tool_get_type")
+  (return-type "GType")
+)
+
+(define-virtual button_press
+  (of-object "GtkIImageTool")
+  (c-name "gtk_iimage_tool_button_press")
+  (return-type "gboolean")
+  (parameters
+    '("GdkEventButton*" "ev")
+  )
+)
+
+(define-virtual button_release
+  (of-object "GtkIImageTool")
+  (c-name "gtk_iimage_tool_button_release")
+  (return-type "gboolean")
+  (parameters
+    '("GdkEventButton*" "ev")
+  )
+)
+
+(define-virtual motion_notify
+  (of-object "GtkIImageTool")
+  (c-name "gtk_iimage_tool_motion_notify")
+  (return-type "gboolean")
+  (parameters
+    '("GdkEventMotion*" "ev")
+  )
+)
+
+(define-virtual pixbuf_changed
+  (of-object "GtkIImageTool")
+  (c-name "gtk_iimage_tool_pixbuf_changed")
+  (return-type "none")
+  (parameters
+    '("gboolean" "reset_fit")
+    '("GdkRectangle*" "rect")
+  )
+)
+
+(define-virtual paint_image
+  (of-object "GtkIImageTool")
+  (c-name "gtk_iimage_tool_paint_image")
+  (return-type "none")
+  (parameters
+    '("GdkPixbufDrawOpts*" "opts")
+    '("GdkDrawable*" "drawable")
+  )
+)
+
+(define-virtual cursor_at_point
+  (of-object "GtkIImageTool")
+  (c-name "gtk_iimage_tool_cursor_at_point")
+  (return-type "GdkCursor*")
+  (parameters
+    '("int" "x")
+    '("int" "y")
+  )
+)
+
+
+
+;; From gtkimagenav.h
+
+(define-function gtk_image_nav_get_type
+  (c-name "gtk_image_nav_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_image_nav_new
+  (c-name "gtk_image_nav_new")
+  (is-constructor-of "GtkImageNav")
+  (return-type "GtkWidget*")
+  (properties
+   '("view")
+  )
+)
+
+(define-method get_pixbuf
+  (of-object "GtkImageNav")
+  (c-name "gtk_image_nav_get_pixbuf")
+  (return-type "GdkPixbuf*")
+)
+
+(define-method grab
+  (of-object "GtkImageNav")
+  (c-name "gtk_image_nav_grab")
+  (return-type "none")
+)
+
+(define-method release
+  (of-object "GtkImageNav")
+  (c-name "gtk_image_nav_release")
+  (return-type "none")
+)
+
+(define-method show_and_grab
+  (of-object "GtkImageNav")
+  (c-name "gtk_image_nav_show_and_grab")
+  (return-type "none")
+  (parameters
+    '("int" "center_x")
+    '("int" "center_y")
+  )
+)
+
+
+
+;; From gtkimagescrollwin.h
+
+(define-function gtk_image_scroll_win_get_type
+  (c-name "gtk_image_scroll_win_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_image_scroll_win_new
+  (c-name "gtk_image_scroll_win_new")
+  (is-constructor-of "GtkImageScrollWin")
+  (return-type "GtkWidget*")
+  (properties
+   '("view")
+  )
+)
+
+
+
+;; From gtkimagetooldragger.h
+
+(define-function gtk_image_tool_dragger_get_type
+  (c-name "gtk_image_tool_dragger_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_image_tool_dragger_new
+  (c-name "gtk_image_tool_dragger_new")
+  (is-constructor-of "GtkImageToolDragger")
+  (return-type "GtkIImageTool*")
+  (properties
+   '("view")
+  )
+)
+
+;; From gtkimagetoolselector.h
+
+(define-function gtk_image_tool_selector_get_type
+  (c-name "gtk_image_tool_selector_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_image_tool_selector_new
+  (c-name "gtk_image_tool_selector_new")
+  (is-constructor-of "GtkImageToolSelector")
+  (return-type "GtkIImageTool*")
+  (properties
+   '("view")
+  )
+)
+
+(define-method get_selection
+  (of-object "GtkImageToolSelector")
+  (c-name "gtk_image_tool_selector_get_selection")
+  (return-type "none")
+  (parameters
+    '("GdkRectangle*" "rect")
+  )
+)
+
+(define-method set_selection
+  (of-object "GtkImageToolSelector")
+  (c-name "gtk_image_tool_selector_set_selection")
+  (return-type "none")
+  (parameters
+    '("GdkRectangle*" "rect")
+  )
+)
+
+
+
+;; From gtkimageview.h
+
+(define-function gtk_image_view_get_type
+  (c-name "gtk_image_view_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_image_view_new
+  (c-name "gtk_image_view_new")
+  (is-constructor-of "GtkImageView")
+  (return-type "GtkWidget*")
+)
+
+(define-method get_viewport
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_viewport")
+  (return-type "gboolean")
+  (parameters
+    '("GdkRectangle*" "rect")
+  )
+)
+
+(define-method get_draw_rect
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_draw_rect")
+  (return-type "gboolean")
+  (parameters
+    '("GdkRectangle*" "rect")
+  )
+)
+
+(define-method get_check_colors
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_check_colors")
+  (return-type "none")
+  (parameters
+    '("int*" "check_color1")
+    '("int*" "check_color2")
+  )
+)
+
+(define-method set_offset
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_offset")
+  (return-type "none")
+  (parameters
+    '("gdouble" "x")
+    '("gdouble" "y")
+    '("gboolean" "invalidate" (default "FALSE"))
+  )
+)
+
+(define-method set_transp
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_transp")
+  (return-type "none")
+  (parameters
+    '("GtkImageTransp" "transp")
+    '("int" "transp_color" (default 0x00000000))
+  )
+)
+
+(define-method get_fitting
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_fitting")
+  (return-type "gboolean")
+)
+
+(define-method set_fitting
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_fitting")
+  (return-type "none")
+  (parameters
+    '("gboolean" "fitting")
+  )
+)
+
+(define-method get_pixbuf
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_pixbuf")
+  (return-type "GdkPixbuf*")
+)
+
+(define-method set_pixbuf
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_pixbuf")
+  (return-type "none")
+  (parameters
+    '("GdkPixbuf*" "pixbuf" (null-ok))
+    '("gboolean" "reset_fit" (default "TRUE"))
+  )
+)
+
+(define-method get_zoom
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_zoom")
+  (return-type "gdouble")
+)
+
+(define-method set_zoom
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_zoom")
+  (return-type "none")
+  (parameters
+    '("gdouble" "zoom")
+  )
+)
+
+(define-method set_black_bg
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_black_bg")
+  (return-type "none")
+  (parameters
+    '("gboolean" "black_bg")
+  )
+)
+
+(define-method get_black_bg
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_black_bg")
+  (return-type "gboolean")
+)
+
+(define-method set_show_frame
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_show_frame")
+  (return-type "none")
+  (parameters
+    '("gboolean" "show_frame")
+  )
+)
+
+(define-method get_show_frame
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_show_frame")
+  (return-type "gboolean")
+)
+
+(define-method set_interpolation
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_interpolation")
+  (return-type "none")
+  (parameters
+    '("GdkInterpType" "interp")
+  )
+)
+
+(define-method get_interpolation
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_interpolation")
+  (return-type "GdkInterpType")
+)
+
+(define-method set_show_cursor
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_show_cursor")
+  (return-type "none")
+  (parameters
+    '("gboolean" "show_cursor")
+  )
+)
+
+(define-method get_show_cursor
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_show_cursor")
+  (return-type "gboolean")
+)
+
+(define-method set_tool
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_set_tool")
+  (return-type "none")
+  (parameters
+    '("GtkIImageTool*" "tool")
+  )
+)
+
+(define-method get_tool
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_get_tool")
+  (return-type "GtkIImageTool*")
+)
+
+(define-method zoom_in
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_zoom_in")
+  (return-type "none")
+)
+
+(define-method zoom_out
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_zoom_out")
+  (return-type "none")
+)
+
+(define-method damage_pixels
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_damage_pixels")
+  (return-type "none")
+  (parameters
+   '("GdkRectangle*" "rect" (default "NULL") (null-ok))
+  )
+)
+
+(define-method image_to_widget_rect
+  (of-object "GtkImageView")
+  (c-name "gtk_image_view_image_to_widget_rect")
+  (return-type "none")
+  (parameters
+   '("GdkRectangle*" "rect_in")
+   '("GdkRectangle*" "rect_out")
+  )
+)
+
+;; Module level functions
+
+(define-function library_version
+  (c-name "gtk_image_view_library_version")
+  (return-type "char*")
+  (caller-owns-return #f)
+)
+
+(define-function zooms_get_zoom_in
+  (c-name "gtk_zooms_get_zoom_in")
+  (return-type "gdouble")
+  (parameters
+    '("gdouble" "zoom")
+  )
+)
+
+(define-function zooms_get_zoom_out
+  (c-name "gtk_zooms_get_zoom_out")
+  (return-type "gdouble")
+  (parameters
+    '("gdouble" "zoom")
+  )
+)
+
+(define-function zooms_get_min_zoom
+  (c-name "gtk_zooms_get_min_zoom")
+  (return-type "gdouble")
+)
+
+(define-function zooms_get_max_zoom
+  (c-name "gtk_zooms_get_max_zoom")
+  (return-type "gdouble")
+)
+
+(define-function zooms_clamp_zoom
+  (c-name "gtk_zooms_clamp_zoom")
+  (return-type "gdouble")
+  (parameters
+    '("gdouble" "zoom")
+  )
+)
+
+

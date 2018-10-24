@@ -1,0 +1,15 @@
+prefix=
+exec_prefix=${prefix}
+includedir=${prefix}/include
+datadir=${prefix}/share
+
+# you can use the --variable=defsdir argument to
+# pkg-config to get this value.
+defsdir=${datadir}/pyclutter/1.0/defs
+
+pyclutterincludedir=${includedir}/pyclutter-1.0
+
+Name: PyClutter
+Description: Python bindings for Clutter
+Version: 1.3.2
+Cflags: -I${pyclutterincludedir}

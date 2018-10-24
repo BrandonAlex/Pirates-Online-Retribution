@@ -1,0 +1,2 @@
+   ______________________________________________________________________________________________________________________________________________________________________________
+Thie is a very early copy of the Pirates Online Retribution Developmental Source. To use, simply click start_game_dev.bat and then enter in the username you'd like to use.

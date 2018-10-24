@@ -1,0 +1,37 @@
+;; Not from any header file
+
+;; Careful not to clash with GtkWindow.set_flags()
+(define-method plot_canvas_set_flags
+  (of-object "GtkPlotCanvas")
+  (c-name "gtk_plot_canvas_set_flags")
+  (return-type "guint16")
+  (parameters
+    '("guint16" "flags")
+  )
+)
+
+(define-method plot_canvas_unset_flags
+  (of-object "GtkPlotCanvas")
+  (c-name "gtk_plot_canvas_unset_flags")
+  (return-type "guint16")
+  (parameters
+    '("guint16" "flags")
+  )
+)
+
+(define-function _set_data_from_pyobject_callback
+  (c-name "_set_data_from_pyobject_callback")
+)
+
+
+(define-function gtk_sheet_range_new
+  (is-constructor-of "GtkSheetRange")
+  (c-name "gtk_sheet_range_new")
+  (return-type "GtkSheetRange*")
+  (parameters
+    '("gint" "row0" (default "0"))
+    '("gint" "col0" (default "0"))
+    '("gint" "rowi" (default "0"))
+    '("gint" "coli" (default "0"))
+  )
+)

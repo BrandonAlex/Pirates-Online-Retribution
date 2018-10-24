@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0175)https://static.parastorage.com/services/ding-dashboard-statics/1.44.0/rcp/rcp.html?data=%7B%22r%22%3A%7B%22v%22%3Atrue%7D%2C%22t%22%3A%22%22%2C%22p%22%3A%22f%22%7D&frames=true -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>WixPhotoAlbums set actions</title>
+</head>
+<body style="background-color: transparent; overflow: hidden;">
+<script>
+    function getUrlParam(name) {
+        return window.location.search.replace('?','').split('&').map(function(ele) {var arr = ele.split('='); return (arr[0]==name ? (arr[1] || '') : '')}).join('');
+    }
+    //general style: direction, color
+    if(getUrlParam("color")) document.body.style.color=decodeURIComponent(getUrlParam("color"));
+    if(getUrlParam("dir")) document.body.style.direction=getUrlParam("dir");
+    if(getUrlParam("data")) {
+        window.config = JSON.parse(decodeURIComponent(getUrlParam("data").replace(/\+/g, '%20')));
+    } else if(getUrlParam("test") ) {
+        var testJson = {};
+        testJson['r'] = {
+            v: true,
+            t: "Copyright"
+        };
+        var test = encodeURIComponent(JSON.stringify(testJson));
+        window.config = JSON.parse(decodeURIComponent(test));
+    }
+
+    //test
+    if(document.domain == 'local.wix.com') {
+        document.domain='wix.com';
+    }
+    if(window.config && !window.config.r ) {
+        window.config.r = {v:true};//,t:"test"
+    }
+
+    //parent (some-domain.com)
+    // => iframe with ding.wix.com
+    //      => iframe with some-domain.com/_partials/...
+    //      => iframe with parastorage.wix.com/...
+
+    if(window.config && window.config.r && window.config.r.v==true) {
+        var rcpSpanId = 'rcp-span';
+        var rcpSpanStyle='display:none; position:fixed;overflow:hidden;background-color: rgba(54,54,54,.4);border-radius:2px;color: #fff; padding: 3px 8px 3px 5px;font-family: HelveticaNeueW01-65Medi, HelveticaNeueW02-65Medi, HelveticaNeueW10-65Medi, Helvetica Neue, Helvetica, Arial, メイリオ, meiryo, ヒラギノ角ゴ pro w3, hiragino kaku gothic pro, sans-serif;font-size:11px;z-index:9999';
+        var rcpCopyrightsImage = '<img src=\"https://static.wixstatic.com/media/8bb438_890d19abb74245b6b55f558eecce22bf.png\" alt=\"(c)\" style=\"vertical-align: middle; -webkit-user-select: none;margin: 0;padding: 0;width: 14px;height:  14px; margin-right: 5px;\">';
+
+        var rcpScriptId = 'rcp-script';
+        var rcpScript = 'var rcpSpan = document.getElementById(\'rcp-span\');';
+        rcpScript += 'window.onmousemove = function (e) { var x = e.clientX, y = e.clientY; rcpSpan.style.top = (y + 20) + \'px\'; rcpSpan.style.left = (x + 20) + \'px\'; };';
+        rcpScript += 'if (document.addEventListener) { document.addEventListener(\'contextmenu\', function(e) { showCR(); e.preventDefault(); }, false); } else { document.attachEvent(\'oncontextmenu\', function() { showCR(); window.event.returnValue = false; }); }';
+        rcpScript += 'function showCR() { rcpSpan.style.display = \'block\'; window.setTimeout(closeCR,2000); }';
+        rcpScript += 'function closeCR() { rcpSpan.style.display = \'none\'; }';
+
+        var rcpStyleId = 'rcp-style';
+        //pointer-events: none !important; prevents clicking on paypal button
+        var rcpStyle = 'img { user-select: none !important; -moz-user-select: none !important; -ms-user-select: none !important; -webkit-user-select: none !important; -webkit-touch-callout:none !important; -webkit-user-drag: none !important; -khtml-user-drag: none !important; -moz-user-drag: none !important; -o-user-drag: none !important; user-drag: none !important;}';
+
+        //timeout and rtp
+        setTimeout(function(){
+            var docArr = [];
+            if(getUrlParam('frames') === 'true') {
+                for(var d=0;d<window.parent.parent.frames.length;d++) {
+                    try {
+                        docArr.push(window.parent.parent.frames[d].document);
+                    } catch (e){
+                        //console.log('catch frame'+ d);
+                    }
+                }
+            } else {
+
+                try {//align domain
+                    window.document.domain = window.parent.parent.document.domain; //test
+                } catch (e){
+                    //failed on parent domain, swich to higher level domain and try again
+                    var originalDomain = window.document.domain;
+                    var parentDomain;
+                    try {
+                        parentDomain = originalDomain.replace(originalDomain.split('.')[0] + '.', '');
+                        window.document.domain = parentDomain;
+                        if(window.document.domain !== window.parent.parent.document.domain) {
+                            console.log('Copyrights - domains do not match. me: ' + window.document.domain + ' parent ' + window.parent.parent.document.domain);
+                        }
+                    } catch (e){
+                        console.log('Copyrights - failed to match domain to ' + parentDomain + ' back to ' + originalDomain);
+                        window.document.domain = originalDomain;//no go, back to original
+                    }
+                    //console.log('catch parent');
+                }
+                try {//add parent
+                    docArr.push(window.parent.parent.document);
+                } catch (e){
+                    //console.log('catch parent');
+                }
+            }
+            for(var i=0;i<docArr.length;i++){
+                try{
+                    var fDoc=docArr[i];
+                    if( window.config.t) {//window.config.r.t ||
+                        var span = fDoc.getElementById(rcpSpanId);
+                        if (!span) {
+                            span = fDoc.createElement('span');
+                            span.id = rcpSpanId;
+                            span.setAttribute('style', rcpSpanStyle);
+                            span.innerHTML =  window.config.t;//rcpCopyrightsImage +window.config.r.t
+                            fDoc.body.appendChild(span);
+                            //console.log('rcp span added ' + i + ' on ' + fDoc.location.origin + fDoc.location.pathname)
+                        } else {
+                            //console.log('rcp span exists ' + i + ' on ' + fDoc.location.origin + fDoc.location.pathname)
+                            span.innerHTML =  window.config.t;
+                        }
+                        if (!fDoc.getElementById(rcpScriptId)) {
+                            var script = fDoc.createElement('script');
+                            script.id = rcpScriptId;
+                            script.type = 'text/javascript';
+                            script.innerHTML = rcpScript;
+                            fDoc.body.appendChild(script);
+                            //console.log('rcp script added ' + i + ' on ' + fDoc.location.origin + fDoc.location.pathname)
+                        } else {
+                            //console.log('rcp script exists ' + i + ' on ' + fDoc.location.origin + fDoc.location.pathname)
+                        }
+                        if (!fDoc.getElementById(rcpStyleId)) {
+                            var style = fDoc.createElement('style');
+                            style.type = 'text/css';
+                            style.id = rcpStyleId;
+                            style.innerHTML = rcpStyle;
+                            fDoc.head.appendChild(style);
+                            //console.log('rcp style added ' + i + ' on ' + fDoc.location.origin + fDoc.location.pathname)
+                        } else {
+                            //console.log('rcp style exists ' + i + ' on ' + fDoc.location.origin + fDoc.location.pathname)
+                        }
+                    } else {
+                        if(!fDoc.getElementById(rcpScriptId)){
+                            var script = fDoc.createElement('script');
+                            script.id = rcpScriptId;
+                            script.type = 'text/javascript';
+                            fDoc.body.appendChild( script );
+                            fDoc.body.setAttribute("oncontextmenu","return false");
+                            //console.log('rcp simple added '+ i + ' on ' + fDoc.location.origin + fDoc.location.pathname);
+                        } else {
+                            //console.log('rcp simple exists '+ i + ' on ' + fDoc.location.origin + fDoc.location.pathname);
+                        }
+                    }
+                }catch (e){
+                    //console.log('catch '+ i);
+                }
+            }
+        }, (getUrlParam('frames') === 'true') ? 1500 : 0 );//wait till akbum action is loaded - this is a patch, need to see if we can detect it
+    }
+
+</script>
+
+
+
+
+</body></html>

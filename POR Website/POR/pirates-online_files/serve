@@ -1,0 +1,335 @@
+
+(function() {
+visadd.texts = {
+flip_back: 'Flip Back'
+}
+visadd.settings = {
+dynamic_strip: false,strip_max_images: 4,lock_count_time: 3600000,use_videos_as_image: true,min_top: 56,use_coverTip: true,goodRatio: 2.4,gray_list_behavior: true,use_user_matching: false,limit_cover_show_count: 4,shift_cover_on_conflict: false,dynamic_script_ads_marker: '',bind_filter_class: 'center-mask',auto_passback_time: 8,strip_on_mouseover: false,blaoink: false,lock_show_between_time: 4200,use_small_coverTip_style_on_large: false,use_sandbox_iframes: false,use_flip: false,unit_macros: '',blacklist_sus_porn: 'adult,sex,sexy,boobs,+18,nfsw,nude,dating,date,hardcore,muscle,cams,movie,live,black,anal,livechat,amateur',comp_words: 'g2.gumgum.com,widgets.kiosked,p.vibrant.co,criteo_q.push,static.criteo.net',unit_wait_for_onload: false,whitelist_site: false,block_on_homepage: false,use_page_tracking: false,hide_on_flip_back: false,my_sticky_mobile: false,bind_on_show: false,flip_timer_first: 8000,monitor_url_change: false,use_strips: true,layer_style: '	.indic_hover_only { display:none }\
+	.indic_hover_only: hover { display:block }\
+	.visadd_layer { display: none;  position: absolute; z-index: 2147483647 !important; }\
+	.visadd_image_container{    float: left;	margin: 0 10px 0px 0 !important;    height: auto !important;    overflow: hidden;} \
+	.ab_visadd_image_container{    float: right !important; 	margin: 0 !important;    } \
+	.right_visadd_image_container{    float: right !important; 	margin: 0 0 0 10px !important; } \
+	.ab_visadd_image_wrap{    float: left;	margin: 0 10px 2px 0 !important;    max-height: 200px;    height: auto !important;    overflow: hidden !important;    position: relative;}\
+	.ab_visadd_image_wrap img {	padding: 0 !important;	border: none !important; margin: 0 !important; }\
+	.visadd_image_credit { 	width: 100%;	z-index: 999;	margin-top: 3px;}\
+	.visadd_image_credit a:hover{    color: #ccc !important;    display: block !important;    font-size: 11px !important;    text-align: center !important;    text-decoration: none !important;    float:left !important;    padding-right: 10px !important;       text-shadow: 1px 1px 1px #e1e1e1;}\
+	.visadd_image_credit a{    color: #ccc !important;    display: block !important;    font-size: 10px !important;    text-align: center !important;    text-decoration: none !important;    float:left !important;    padding-right: 10px !important;      text-shadow: 1px 1px 1px #e1e1e1 !important;    line-height: 10px;}\
+	.visadd_layer_frame{ left: 0;float:left;}\
+	.visadd_layer_window{			position: absolute;			z-index: 1002;	} \
+	.visadd_layer_window_body{			border: 1px solid #CCCDCF !important;	background: #fff !important; overflow: hidden !important; box-shadow: 2px 2px 2px 0px #888888;}\
+	.visadd_layer_header{    border-bottom: 1px solid #EEEEEE !important;    color: #777777 !important;    font-size: 12px !important;    font-weight: bold !important;    height: 26px !important; padding: 0 6px 0 13px !important;}\
+	.visadd_layer_header_btn{	float: right;	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAPCAYAAABqQqYpAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAACxSURBVEhLzZVRDoQgDERZr8T9bwBncreGWXEcsBI+eIkJraUMpYHP/iMQOecyOokxlpEfb56LCExSgb1/zOs8JsJIKZVRn6e4kTyHCO9E0IpXfvPhY+DbSkH+WLlQMqB8U2GFrJxt8GR7sXm3StQNU+/e05AKVLFXyZsIgxccFeBFimDVvV3MQDYmaB3NbDZbSC0AAeooLJ79Ko/HPvKgQ9/Qih/Ns8SNucTbscArGsIXsh/mB69HaHoAAAAASUVORK5CYII=);	width:16px;	height:15px;	margin: 4px 0 0 0;}\
+	.visadd_layer_poweredby{			background-position: -18px 0px;		}\
+	.visadd_layer_poweredby:hover{					}\
+	.visadd_layer_close{			background-position: 0 0px;		cursor: pointer;}\
+	.visadd_layer_close:hover{					}\
+	.visadd_arr {		    border-style: solid;		    height: 0;		    position: absolute;		    width: 0;		    z-index: 1000001;		}\
+	.visadd_right-top {		    bottom: 234px;		}\
+	.visadd_layer_loader{ margin: 100px !important; display:none; }\
+	.visadd_report_message {	background-color: white !important; border: 2px solid #DDDDDD;	font-size: 12px;	font-family: arial,times New Roman;	height: 72px;	width: 220px;	padding: 2px;	display: none;	color: gray;	position: absolute !important; z-index: 2147483647}\
+	.visadd_report_container{  float:right !important; background: none repeat scroll 0 0 #999999 !important;    border-radius: 6px 6px 6px 6px !important;    color: white !important;    font-family: arial !important;    font-size: 9px !important;    line-height: 10px !important;    padding: 0 3px;} \
+	.visadd_report_text{    float: left !important;    font-size: 12px !important;    line-height: 12px !important;    padding: 3px;}\
+	.visadd_layer_header .header_title {    float: left !important;    font-family: arial !important;    font-size: 15px !important;    line-height: 21px !important;    margin-top: 3px;}\
+	#imo_rotate_ad {    padding: 6px 3px;}\
+	.visadd_layer { height:283px;}\
+	.visadd_layer_frame_c iframe{margin:0}\
+	\
+',tip_max_images: -1,max_flip_width: 900,coverTip_min_Width_mobile: 250,sticky_cap_x24: 7,force_image_selection: false,cover_tip_automatic_show_count: 2,layer_html: '<div id="visadd_layer_window" class="visadd_layer_window"> \
+			<div class="visadd_arr visadd_right-top" id="visadd_arr_0"></div>\
+			<div class="visadd_arr visadd_right-top" id="visadd_arr_1"></div>\
+			<div class="visadd_layer_window_body">\
+				<div id="visadd_layer_header" class="visadd_layer_header">' +
+					'<span class="header_title">Online Deals.</span>' +
+					'<div id="visadd_layer_close" class="visadd_layer_close visadd_layer_header_btn"></div>\
+					<a href="$$unit_marker_url$$" target=blank rel="nofollow"><div class="visadd_layer_poweredby visadd_layer_header_btn"></div></a><span id="visadd_unit_marking" style="color: ##99999; float: right; font-family:Ariel,Times New Roman;font-size: 11px !important; padding: 7px 5px 4px 4px; line-height:10px; font-weight:bold" >$$unit_mark$$</span>\
+				</div>' +		  	  
+  	  	'<div id="visadd_layer_frame_c" class="visadd_layer_frame_c"><if' + 'rame id="visadd_layer_frame" scrolling="no" frameborder="0" ALLOWTRANSPARENCY="true" class="visadd_layer_frame"></iframe><if' + 'rame id="visadd_layer_frame_test" scrolling="no" frameborder="0" ALLOWTRANSPARENCY="true" class="visadd_layer_frame_test" style="display:none"></iframe></div> \
+			</div>\
+ </div>\
+',private_code: '',unit_marker: '<a href="$$unit_marker_url$$" target=blank rel="nofollow"><div class="visadd_layer_poweredby visadd_layer_header_btn"></div></a><span id="visadd_unit_marking" style="color: ##99999; float: right; font-family:Ariel,Times New Roman;font-size: 11px !important; padding: 7px 5px 4px 4px; line-height:10px; font-weight:bold" >$$unit_mark$$</span>',max_flip_height: 900,use_search_marker: false,cover_timer_first: 3500,strips_after_cover: true,shopping_site: false,use_tipForSmallImg: false,use_random_format_on_bind: false,page_force_options_regex: false,manipulate_settings: function(){if(document.location.hostname=="www.infobae.com"){visadd.settings.use_coverTip=false;visadd.settings.my_cover_mobile=false;visadd.settings.use_strips=false;visadd.settings.my_strips_mobile=false;visadd.settings.use_sticky=false;visadd.settings.my_sticky_mobile=false}if(visadd.settings.validate_blacklist==false){visadd.settings.use_videos_as_image=true}},lock_counter: 2,use_coverTipForSmallImg: true,close_lock_time: 0,cover_show_ad_interval: 400,coverTip_min_Heigth: 215,term_tos_on_unit: '',tracking_show_url: '',coverTip_min_Width: 260,add_element_by_classes: false,hide_sticky_onscroll: false,min_size_factor_change: 1,flip_timer: 3500,Check_Bots: 3,min_image_size: 100,cornner_side: 'right',unit_marking: false,use_sticky: true,flip_max_images: 1,coverTip_min_Heigth_mobile: 206,passback_code: function(product){if(product=="sticky"){window.postMessage("imonomy_sticky_fallback","*")}if(product!="sticky"){window.postMessage("imonomy_inimage_fallback","*")}},use_roll: false,use_cross_domain_lock: true,pid: 14567725553,user_matching: false,scroll_pos_to_show: 0.3,unit_marker_url: 'http://xfactact.com',bind_tip_layer: true,blacklist: 'best sex,adult website,BBW,outdoors nude,nsfw +18,pawgs,flashing,muscle bears,free sex,adult dating,adults only,pornographic,femdom,youporn,anal,porno,naked,hardcore movies,sexy muscle,cartoon sex,exoclick,adult cams,live cams,pornstars,erotica,ahole,anus,ash0le,ash0les,asholes,Ass Monkey,Assface,assh0le,assh0lez,asshole,assholes,assholz,asswipe,azzhole,bassterds,bastard,bastards,bastardz,basterds,basterdz,Biatch,bitch,bitches,Blow Job,boffing,butthole,buttwipe,c0ck,c0cks,Carpet Muncher,cawks,Clit,cock,cockhead,cock-head,cocks,CockSucker,cock-sucker,dick,dild0,dild0s,dildo,dildos,dilld0,dilld0s,dominatricks,dominatrics,dominatrix,dyke,f u c k,f u c k e r,fag,fag1t,faget,fagg1t,faggit,faggot,fagit,fags,fagz,faig,faigs,fart,flipping the bird,fuck,fucker,fuckin,fucking,fucks,Fudge Packer,fuk,Fukah,Fuken,fuker,Fukin,Fukk,Fukkah,Fukken,Fukker,Fukkin,g00k,gayboy,gaygirl,gayz,God-damned,h00r,h0ar,h0re,hoor,hoore,jackoff,jerk-off,jisim,Lesbian,Lezzian,Lipshits,Lipshitz,masochist,masokist,massterbait,masstrbait,masstrbate,masterbaiter,masterbate,masterbates,Motha Fucker,Motha Fuker,Motha Fukkah,Motha Fukker,Mother Fucker,Mother Fukah,Mother Fuker,Mother Fukkah,Mother Fukker,mother-fucker,Mutha Fucker,Mutha Fukah,Mutha Fuker,Mutha Fukkah,Mutha Fukker,nastt,orafis,orgasim,orgasm,orgasum,oriface,orifice,peeenusss,peenus,peinus,pen1s,penis,penis-breath,penus,penuus,Phuker,Phukker,pr1c,pr1ck,pr1k,pussee,pussy,puuker,queer,queers,queerz,qweers,qweerz,qweir,recktum,rectum,sadist,scank,schlong,screwing,semen,Sh!t,sh1t,sh1ter,sh1ts,sh1tter,sh1tz,shits,shitter,skanck,skank,skankee,skankey,skanks,Skanky,slut,sluts,Slutty,slutz,son-of-a-bitch,va1jina,vag1na,vagiina,vagina,vaj1na,vajina,vullva,vulva,wh00r,wh0re,whore,xrated,b!+ch,blowjob,arschloch,b!tch,b17ch,b1tch,bi+ch,boiolas,buceta,cipa,clits,dirsa,ejakulate,fatass,fcuk,fux0r,hoer,hore,jism,kawk,l3itch,l3i+ch,masturbate,masterbat,masterbat3,motherfucker,s.o.b.,nigger,nutsack,pimpis,scrotum,shemale,boobs,b00bs,teez,testical,testicle,w00se,whoar,amcik,andskota,assrammer,bi7ch,bollock,breasts,butt-pirate,cabron,cazzo,chraa,chuj,d4mn,daygo,dego,dike,dupa,dziwka,ejackulate,Ekrem,Ekto,enculer,fanculo,Felcher,ficken,Flikker,foreskin,Fotze,futkretzn,guiena,h4x0r,helvete,honkey,Huevon,lesbo,mamhoon,masturbat,mibun,monkleigh,mouliewop,mulkku,muschi,nepesaurio,orospu,picka,pierdol,pillu,pimmel,pizda,poontsee,poop,porn,p0rn,pr0n,preteen,pula,pule,puta,puto,qahbeh,queef,rautenberg,schaffer,milf',allow_auto_passback: false,force_product_type_function: false,xtraStyle: '.visadd_coverTip_container { display: block !important; left: -4500px; } .visadd_layer_header_btn{width: 12px !important; height: 12px !important; margin-left: 3px !important;} .visadd_layer_header{background: none repeat scroll 0 0 #555555 !important;} .header_title{color: #ffffff !important;} .visadd_layer_poweredby{background-position: 0px !important; margin-top: 6px !important; background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAACXBIWXMAAAsTAAALEwEAmpwYAAADG2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjaY2BgnuDo4uTKJMDAUFBUUuQe5BgZERmlwH6egY2BmYGBgYGBITG5uMAxIMCHgYGBIS8/L5UBFTAyMHy7xsDIwMDAcFnX0cXJlYE0wJpcUFTCwMBwgIGBwSgltTiZgYHhCwMDQ3p5SUEJAwNjDAMDg0hSdkEJAwNjAQMDg0h2SJAzAwNjCwMDE09JakUJAwMDg3N+QWVRZnpGiYKhpaWlgmNKflKqQnBlcUlqbrGCZ15yflFBflFiSWoKAwMD1A4GBgYGXpf8EgX3xMw8BUNTVQYqg4jIKAUICxE+CDEESC4tKoMHJQODAIMWgx9DJcMqhgeM0oxRjPMYnzIZMjUwXWLWYG5kvstiwzKPlZk1m/UqmxPbJnYV9pkcAhydnKyczVzMXG3c3NwTeaR4lvIa8x7iC+Z7xl8tICSwWtBN8JFQo7Ci8GGRdFFe0a1iceKc4lslUiSFJY9KVUjrSj+RmSMbKicod1a+R8FHkVfxgtIU5SgVJZXXqlvVGtX9NGQ13mru05qonapjrSuk+0rviP58gxrDKCNLY0nj3yb3TA+brTDvt6iwTLTysbawUbUVsWOx+2r/3OG24wWnY857Xba6rndb6b7UY5HnQq8F3gt9Fvsu81vlvz5ga+DeoGPB50NuhT4L+xLBFCkYpRRtHOMWGxWXF9+SMDtxc9LZ5OepTGly6TYZUZlVWbOy9+Tcy2PKVy/wKSwuml18uORtmUS5S0Vh5byqs9V/a/Xq4usnNRxr/N1s0JLeOq/teodgp3dXe/fhXoY++/66Cfsm/p/sOKV16onpvDOCZ86a9WiO1tySefsWcC0MW7R48celDssmLH+40nhV6+qba3XXNa2/udFgU8fmB1uttk3d/mGn765Vezj2pu87fkD9YOeh10f8jm4+Ln6i9uST095ntpyTPd9+4dOluMunrlpcW3ZD9Gbrra930u/evO/z4MAj08ernyo+m/lC8GXXa+Y3dW9/vi/98OlTwed3X/O+vfuR//PD7+I/3/5V/f8PAC4MHYugPAkxAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE8SURBVHgBACwB0/4BbuQRDf8AAQAAAAAAAAD/AAEAAQD/APDzAID2//////////////////////////+B9gQA+wAJAAAAAIEAAAAAAAAAfwAAAAAA/vsC/wAAAAAAgQAAAH8AfwAAAIEAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAQBAAAAAAB/AAAAAACBAAAAfwAAAAAA/wAC/wAAAAAAAAAAAIEAAAB/AAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQBAAAAAAAAAAAAfwAAAAAAAAAAAAAAAQAC/wAAAAAAAAAAAIEAgQAAAAAAAAAAAAAABAEFAAAAAAAAAAB/AAAAAAAAAAAAAAAABQFu5BENAAAAAP8AAgD/AAAAAQD/AAEA7vMBAAD//32pMiJ32RZqAAAAAElFTkSuQmCC") !important;} .visadd_layer_close{background-position: 0px !important; margin-top: 6px !important; background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAACXBIWXMAAAsTAAALEwEAmpwYAAADG2lDQ1BQaG90b3Nob3AgSUNDIHByb2ZpbGUAAHjaY2BgnuDo4uTKJMDAUFBUUuQe5BgZERmlwH6egY2BmYGBgYGBITG5uMAxIMCHgYGBIS8/L5UBFTAyMHy7xsDIwMDAcFnX0cXJlYE0wJpcUFTCwMBwgIGBwSgltTiZgYHhCwMDQ3p5SUEJAwNjDAMDg0hSdkEJAwNjAQMDg0h2SJAzAwNjCwMDE09JakUJAwMDg3N+QWVRZnpGiYKhpaWlgmNKflKqQnBlcUlqbrGCZ15yflFBflFiSWoKAwMD1A4GBgYGXpf8EgX3xMw8BUNTVQYqg4jIKAUICxE+CDEESC4tKoMHJQODAIMWgx9DJcMqhgeM0oxRjPMYnzIZMjUwXWLWYG5kvstiwzKPlZk1m/UqmxPbJnYV9pkcAhydnKyczVzMXG3c3NwTeaR4lvIa8x7iC+Z7xl8tICSwWtBN8JFQo7Ci8GGRdFFe0a1iceKc4lslUiSFJY9KVUjrSj+RmSMbKicod1a+R8FHkVfxgtIU5SgVJZXXqlvVGtX9NGQ13mru05qonapjrSuk+0rviP58gxrDKCNLY0nj3yb3TA+brTDvt6iwTLTysbawUbUVsWOx+2r/3OG24wWnY857Xba6rndb6b7UY5HnQq8F3gt9Fvsu81vlvz5ga+DeoGPB50NuhT4L+xLBFCkYpRRtHOMWGxWXF9+SMDtxc9LZ5OepTGly6TYZUZlVWbOy9+Tcy2PKVy/wKSwuml18uORtmUS5S0Vh5byqs9V/a/Xq4usnNRxr/N1s0JLeOq/teodgp3dXe/fhXoY++/66Cfsm/p/sOKV16onpvDOCZ86a9WiO1tySefsWcC0MW7R48celDssmLH+40nhV6+qba3XXNa2/udFgU8fmB1uttk3d/mGn765Vezj2pu87fkD9YOeh10f8jm4+Ln6i9uST095ntpyTPd9+4dOluMunrlpcW3ZD9Gbrra930u/evO/z4MAj08ernyo+m/lC8GXXa+Y3dW9/vi/98OlTwed3X/O+vfuR//PD7+I/3/5V/f8PAC4MHYugPAkxAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAAE8SURBVHgBACwB0/4BbuQRDf8AAQAAAAAAAAD/AAEAAQD/APDzAID2//////////////////////////+B9gIA+wAAAADvAOUAAAAAAPsA6QD/AAAA/vsC/wAAAAAA+ACXAL0A+ACGAMAAAQAAAAAABAAAAAAAABkAMQCwAMwA7gA9AAAAAAABAAIBAAAAAAAAAFMAEgDPAF8AGgAAAAAA/wAC/wAAAAAAAADsAPEAAwDeAAAAAAAAAAAAAgAAAAAAAO8AiwAVAFwAtADAAAAAAAAAAAQBAAAAAADhABMAXgAYAOsA4gD9AAMAAQAE/wAAAAAAKgAwAAAAAABeAPwAAAAAAAAABAEFAAAAAAYAAAAAAAAAAAAEAAAAAAAABQFu5BENAAAAAP8AAgD/AAAAAQD/AAEA7vMBAAD//wX4RIwIbq3EAAAAAElFTkSuQmCC") !important;} .visadd_layer_close:hover {background-position: 0px 0px !important;} #visadd_unit_marking{color: #ffffff !important;}',hook_site_image: true,validate_offers_networks: true,quality_words: {'g2.gumgum.com':10,'widgets.kiosked':10,'p.vibrant.co':10,'criteo_q.push':11,'static.criteo.net':11,'googletagservices.com/doubleclick/dartiframe.html':12,'google_unit_client':12,'googletag.cmd':12,'truste.com':13,'visualrevenue.com':13,'lingospot.com':13,'itunes.apple.com':14,'outbrain.com':15,'linkedin.com':13,'taboola.com':15,'gravity.com':15,'nrelate.com':15,'zedo.com':15,'wallstcheatsheet.com':15,'nr_related_placeholder':15,                             'cdn.adshexa.com/show_ads': 21,'pagead2.googlesyndication.com':22, 'smartadserver.com/call': 23, 'clkrev.com/adServe': 25, 'googleads.g.doubleclick.net': 26, 'google_ad_client': 27, 'vietnamnetad.vn': 28, 'pubads.g.doubleclick.net': 29, 'googlesyndication.com': 30, 'ads.rubiconproject.com': 31, 'cas.criteo.com/delivery': 32, 'webspectator.com':33, '/tag.contextweb.com': 34, 'ads.pubmatic.com': 35,'show_ads_epmads.js': 36,'s.atemda.com/Admeta.js':37, 'ads.mediafem.com': 38,'openx.net/w':39, 'adfarm.mediaplex.com/ad':40, 'jsc.mgid.com':41, 'optimizedby.brealtime.com/': 42, 'ib.adnxs.com/ttj':43, 'scripts.chitika.net/': 44, 'clkrev.com/adServe': 45,                            'resources.infolinks.com/js': 46, 'kona.kontera.com': 47, 'astatic.virgul.com': 48, 'adspirit.de/adscript': 49, 'adspaces.ero-advertising.com': 50, 'ads.bumq.com': 51 },uid: 'i-52229417485240261471500022.33359',shopping_agresive: false,validate_blacklist: true,use_tip: false,ignore_body: false,my_cover_mobile: false,flip_times_limit: false,blacklist_porn: 'booty shake,best sex,adult website,BBW,outdoors nude,nsfw +18,pawgs,flashing,muscle bears,adults only,free sex,adult dating,pornographic,femdom,hardcore movies,exoclick,adult cams,live cams,pornstars,anus,Ass Monkey,Blow Job,CockSucker,cock-sucker,dominatricks,dominatrics,dominatrix,flipping the bird,gayboy,gaygirl,God-damned,jackoff,Lesbian,Lezzian,Lipshits,Lipshitz,masochist,masokist,massterbait,masstrbait,masstrbate,masterbaiter,masterbate,masterbates,mother-fucker,orgasim,orgasm,orgasum,pussy,schlong,vagiina,vagina,vaj1na,vajina,vullva,vulva,xrated,blowjob,ejakulate,masturbate,masterbat,masterbat3,motherfucker,w00se,whoar,amcik,andskota,assrammer,butt-pirate,ejackulate,lesbo,mamhoon,masturbat',roll_max_images: 1,gray_list_history: 'Thu, 18 Aug 2016 08:53:02 GMT$$Thu, 18 Aug 2016 08:53:02 GMT$$1',use_fallback_strips: true,time_to_refresh: 55000,quality_type: '99',bind_scroll: true,use_new_cover_style: false,use_bidder: false,set_strip_width: false,limit_tag_to_website: false,sticky_cap: 2,generic_refresh_count: 1,autoplay_myroll: true,img_position_fixed: false,my_strips_mobile: false,hover_hooked_images: false,time_taken: true,my_slider_mobile: false,use_sandbox_iframes_mobile: true,strip_from_top: false,lock_domain_time: 0
+/*Configuration Default/PerSite
+Action can be defiined per site
+Hover
+Scroll
+Minimum ImageSize
+Force Indication Icon
+First Hover delay
+Second Hover delay
+filter hover element
+filter pages
+hover location / side
+scroll left
+scroll position
+*/
+}
+if (window.visadd_unit_macros){
+visadd.settings.unit_macros = window.visadd_unit_macros;
+} else if (visadd.settings.unit_macros && typeof(visadd.settings.unit_macros) == 'string' && visadd.settings.unit_macros != "") {
+visadd.settings.unit_macros = JSON.parse(visadd.settings.unit_macros);
+}
+visadd.ab_testing = {
+
+}
+var ab_label = "_";
+if (visadd.ab_testing) {
+var ab_label_aux = [];
+for (var prop in visadd.ab_testing) {
+var splitted_prop = visadd.ab_testing[prop].split("||");
+// valid label regex
+var reg = /^[A-Za-z\d\s]+$/;
+if (splitted_prop.length == 2 && splitted_prop[0].indexOf('=') > 0 && reg.test(splitted_prop[1] + "\n") && ab_label_aux.indexOf(splitted_prop[1]) < 0 && splitted_prop[1].length > 0) {
+ab_label_aux.push(splitted_prop[1]);
+var aux = {};
+var percentage = 0;
+for (var i = 0; i < splitted_prop.length - 1; i++) {
+splitted_item = splitted_prop[i].split("=");
+percentage += parseInt(splitted_item[0]);
+aux[percentage] = splitted_item[1];
+}
+rnd = Math.floor(Math.random() * 100);
+for(key in aux) {
+if (rnd < parseInt(key)) {
+// boolean
+if (aux[key] == "true" || aux[key] == "false") {
+visadd.settings[prop] = aux[key] == "true" ? true : false;
+// numeric
+} else if (!isNaN(aux[key])) {
+visadd.settings[prop] = parseFloat(aux[key]);
+// string
+} else {
+visadd.settings[prop] = aux[key].charAt(0) === '"' && aux[key].charAt(aux[key].length -1) === '"' ? aux[key].substr(1,aux[key].length -2) : aux[key];
+}
+ab_label += splitted_prop[splitted_prop.length - 1] + "_";
+break;
+}
+}
+}
+}
+}
+ab_label = ab_label.length > 1 ? ab_label.slice(1, -1) : "";
+visadd.ab_label = ab_label;
+if (visadd.settings.manipulate_settings){
+visadd.settings.manipulate_settings();
+}
+var allow_home_page = !(typeof(visadd.page.version) != undefined && visadd.page.version > 1 && visadd.utils.isHomePage() && visadd.settings.block_on_homepage);
+var allow = allow_home_page;
+if (visadd.settings.validate_blacklist){
+if (visadd.page.isContainsBlackListWord()){
+visadd.tracker.reportBlackList("init", "");
+allow = false;
+} else{
+visadd.tracker.reportNoneBlackList();
+}
+}
+
+if(visadd.settings.use_user_matching && !visadd.settings.user_matching) {
+var uri = visadd.utils.protocol() +'//a.visadd.com/UserMatching';
+var res = encodeURIComponent(uri);
+var exchange_frame = document.createElement('iframe');
+exchange_frame.style.display = "none";
+if(window.location.protocol == "http:") {
+exchange_frame.src = 'http://ssum.casalemedia.com/usermatch?s=183718&cb=' + res ;
+document.body.appendChild(exchange_frame);
+}
+}
+if (typeof(visadd.page.version) != undefined && visadd.page.version > 0){
+var quality_type = visadd.settings.quality_type;
+if (!allow_home_page){
+visadd.settings.quality_type = 16;
+}
+else if (quality_type != 2 && !allow){
+visadd.settings.quality_type = 9;
+} else{
+try{
+if (visadd.settings.quality_type == '99'){
+visadd.settings.quality_type = "";
+}
+if (visadd.settings.quality_words && visadd.page.WordChecker(Object.keys(visadd.settings.quality_words).join(','),false, false, true)){
+var quality_words_keys = Object.keys(visadd.settings.quality_words);
+for(var i=0; i<quality_words_keys.length; i++) {
+var blacklist_word = visadd.page.WordChecker(quality_words_keys[i],true, false, true);
+if (blacklist_word in visadd.settings.quality_words){
+if (visadd.settings.quality_type != ""){
+visadd.settings.quality_type += ","
+}
+visadd.settings.quality_type += visadd.settings.quality_words[blacklist_word].toString();
+}
+}
+}
+if (visadd.layer.shopping_site()){
+if (visadd.settings.quality_type != ""){
+visadd.settings.quality_type += ","
+}
+visadd.settings.quality_type += "20";
+}
+if (visadd.page.isContainsBlackListWord()){
+if (visadd.settings.quality_type != ""){
+visadd.settings.quality_type += ","
+}
+visadd.settings.quality_type += "52";
+}
+if (visadd.settings.quality_type == ""){
+visadd.settings.quality_type = quality_type;
+}
+} catch(e){
+visadd.settings.quality_type = quality_type += ",97";
+}
+}
+visadd.page.trackServ(990, "imp", visadd.settings.quality_type);
+var user_id = visadd.settings.uid;
+
+if(visadd.settings.Check_Bots != false || visadd.settings.Check_Bots > 0)
+{
+var percent = visadd.settings.Check_Bots == true ? 0 : visadd.settings.Check_Bots;
+var rnd = (Math.random()*100);
+if (rnd < percent) {
+var pubID = visadd.layer.get_sid(),
+dom = visadd.page.domain(),
+subID = visadd.layer.get_sub_id(),
+url = window.location.href,
+lang = visadd.preload.language();
+var c_check_url = '';
+c_check_url = '//c.fqtag.com/tag/implement-r.js?org=F0PcXB03ZlblukgOY2nw&p=' + pubID + '&a=' + subID + '&rd=' + url + '&applng=' + lang + '&sl=1&fq=1';
+visadd.utils.injectScript(c_check_url);
+}
+}
+}
+//brand+customers // moved to server
+//if (visadd.settings.gray_list_behavior && [11,8].indexOf(visadd.settings.quality_type) != -1){
+// return;
+//}
+visadd.site = {
+xtraStyle: function(){
+
+return "";
+},
+xtraImages: function(){
+
+return null;
+},
+title: function(){
+
+return null;
+},
+keywords: function(){
+
+return null;
+}
+}
+if (visadd.settings.blaoink){
+visadd.utils.setCookie("baoijk", "true", 3600000, '/');
+visadd.layer.hold();
+//if (visadd.settings.click_request_id) {
+// var c_check_url = "//c.fqtag.com/tag/implement-r.js?org=F0PcXB03ZlblukgOY2nw&p=" + visadd.global_settings.sid + "&a=" + visadd.layer.get_sub_id() +"&cmp=" + visadd.settings.click_screen_location_id + "&&rt=click&sl=1";
+// visadd.utils.injectScript(c_check_url);
+//}
+}
+if (typeof(visadd_hook_images) != 'undefined'){
+visadd.settings.hook_site_image = visadd_hook_images;
+}
+visadd.utils.keywords_words = null;
+var visadd_ready_init = false;
+var visadd_ready_ready = false;
+if (window.viimo_inpage_setup){
+if (visadd.inPage) {
+visadd.inPage.allow = true;
+visadd.inPage.execute();
+}
+}
+visadd.onReady = function() {
+if (visadd_ready_ready){
+return;
+}
+visadd_ready_ready = true;
+if (allow){
+visadd.onReadyInit();
+visadd.layer.bindImages();
+}
+};
+visadd.intervalBindImages = function(){
+if ( visadd.settings != null ) { // check after function clear_init that visadd.settings is not null
+visadd.layer.bindImages();
+if (!visadd_ready_ready){
+setTimeout(function() { visadd.intervalBindImages(); }, 300);
+}else{
+setTimeout(function() { visadd.intervalBindImages(); }, 1000);
+}
+} else {
+setTimeout(function() { visadd.intervalBindImages(); }, 300);
+}
+}
+visadd.onReadyInit = function() {
+if (visadd_ready_init){
+return;
+}
+visadd_ready_init = true;
+if (allow){
+visadd.layer.init();
+setTimeout(function() {
+visadd.intervalBindImages();
+}, 30);
+}
+
+};
+/* NOTE: This code is self-executing. This is necessary in order to correctly determine the ready status. ( credit: facebook connect-js )
+*/
+(function() {
+var visadd_bodyReadyTryCounter = 0;
+function visadd_bodyReady(fn) {
+var bodyRef = document.getElementsByTagName("body");
+if (bodyRef.length == 0) {
+visadd_bodyReadyTryCounter++;
+if (visadd_bodyReadyTryCounter <= 10) {
+window.setTimeout(function () {
+visadd_bodyReady(fn)
+}, 500)
+}
+} else {
+fn()
+}
+}
+visadd_bodyReady(visadd.onReadyInit);
+// In case we're already ready.
+if (document.readyState == 'complete') {
+return visadd.onReady();
+}
+// Good citizens.
+if (document.addEventListener) {
+document.addEventListener('DOMContentLoaded', visadd.onReady, false);
+// Bad citizens.
+} else if (document.attachEvent) {
+document.attachEvent('onreadystatechange', visadd.onReady);
+}
+// Bad citizens.
+// If IE is used and page is not in a frame, continuously check to see if
+// the document is ready
+if (visadd.utils.isIE() && window === top) {
+(function() {
+try {
+// If IE is used, use the trick by Diego Perini
+// http://javascript.nwbox.com/IEContentLoaded/
+document.documentElement.doScroll('left');
+} catch(error) {
+setTimeout(arguments.callee, 0);
+return;
+}
+// and execute any waiting functions
+visadd.onReady();
+})();
+}
+// Ultimate Fallback.
+var oldonload = window.onload;
+window.onload = function() {
+visadd.onReady();
+if (oldonload) {
+if (typeof oldonload == 'string') {
+eval(oldonload);
+} else {
+oldonload();
+}
+}
+};
+})();
+/****************************************************************************************************************/
+})();

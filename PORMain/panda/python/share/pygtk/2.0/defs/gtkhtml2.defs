@@ -1,0 +1,347 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-object HtmlContext
+  (in-module "Gtk")
+  (parent "GObject")
+  (c-name "GtkHtmlContext")
+  (gtype-id "GTK_HTML_CONTEXT_TYPE")
+)
+
+(define-object View
+  (in-module "Html")
+  (parent "GtkLayout")
+  (c-name "HtmlView")
+  (gtype-id "HTML_TYPE_VIEW")
+  (fields
+    '("HtmlDocumen*" "document")
+  )
+)
+
+;; Enumerations and flags ...
+
+
+;; From /usr/include/gtkhtml-2.0/libgtkhtml/gtkhtmlcontext.h
+
+(define-function gtk_html_context_get_type
+  (c-name "gtk_html_context_get_type")
+  (return-type "GType")
+)
+
+(define-function gtk_html_context_get
+  (c-name "gtk_html_context_get")
+  (return-type "GtkHtmlContext*")
+)
+
+
+;; From /usr/include/gtkhtml-2.0/libgtkhtml/view/htmlselection.h
+
+(define-function html_selection_end
+  (c-name "html_selection_end")
+  (return-type "none")
+  (parameters
+    '("HtmlView*" "view")
+    '("GdkEventButton*" "event")
+  )
+)
+
+(define-function html_selection_update
+  (c-name "html_selection_update")
+  (return-type "none")
+  (parameters
+    '("HtmlView*" "view")
+    '("GdkEventMotion*" "event")
+  )
+)
+
+(define-function html_selection_clear
+  (c-name "html_selection_clear")
+  (return-type "none")
+  (parameters
+    '("HtmlView*" "view")
+  )
+)
+
+(define-function html_selection_set
+  (c-name "html_selection_set")
+  (return-type "none")
+  (parameters
+    '("HtmlView*" "view")
+    '("DomNode*" "start")
+    '("int" "offset")
+    '("int" "len")
+  )
+)
+
+(define-function html_selection_get_text
+  (c-name "html_selection_get_text")
+  (return-type "gchar*")
+  (parameters
+   '("HtmlView*" "view")
+  )
+)
+
+
+;; From /usr/include/gtkhtml-2.0/libgtkhtml/view/htmlview.h
+
+(define-function html_view_get_type
+  (c-name "html_view_get_type")
+  (return-type "GType")
+)
+
+(define-function html_view_new
+  (is-constructor-of HtmlView)
+  (c-name "html_view_new")
+)
+
+(define-method set_document
+  (of-object "HtmlView")
+  (c-name "html_view_set_document")
+  (return-type "none")
+  (parameters
+    '("HtmlDocument*" "document")
+  )
+)
+
+(define-method jump_to_anchor
+  (of-object "HtmlView")
+  (c-name "html_view_jump_to_anchor")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "anchor")
+  )
+)
+
+(define-method get_magnification
+  (of-object "HtmlView")
+  (c-name "html_view_get_magnification")
+  (return-type "gdouble")
+)
+
+(define-method set_magnification
+  (of-object "HtmlView")
+  (c-name "html_view_set_magnification")
+  (return-type "none")
+  (parameters
+    '("gdouble" "magnification")
+  )
+)
+
+(define-method zoom_in
+  (of-object "HtmlView")
+  (c-name "html_view_zoom_in")
+  (return-type "none")
+)
+
+(define-method zoom_out
+  (of-object "HtmlView")
+  (c-name "html_view_zoom_out")
+  (return-type "none")
+)
+
+(define-method zoom_reset
+  (of-object "HtmlView")
+  (c-name "html_view_zoom_reset")
+  (return-type "none")
+)
+
+(define-method find_layout_box
+  (of-object "HtmlView")
+  (c-name "html_view_find_layout_box")
+  (return-type "HtmlBox*")
+  (parameters
+    '("DomNode*" "node")
+    '("gboolean" "find_parent")
+  )
+)
+
+
+;; -*- scheme -*-
+; object definitions ...
+(define-object Document
+  (in-module "Html")
+  (parent "GObject")
+  (c-name "HtmlDocument")
+  (gtype-id "HTML_TYPE_DOCUMENT")
+)
+
+;; Enumerations and flags ...
+
+(define-enum DocumentState
+  (in-module "Html")
+  (c-name "HtmlDocumentState")
+  (values
+    '("done" "HTML_DOCUMENT_STATE_DONE")
+    '("parsing" "HTML_DOCUMENT_STATE_PARSING")
+  )
+)
+
+
+;; From /usr/include/gtkhtml-2.0/libgtkhtml/document/htmldocument.h
+
+(define-function html_document_get_type
+  (c-name "html_document_get_type")
+  (return-type "GType")
+)
+
+(define-function html_document_new
+  (is-constructor-of HtmlDocument)
+  (c-name "html_document_new")
+)
+
+(define-method open_stream
+  (of-object "HtmlDocument")
+  (c-name "html_document_open_stream")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "mime_type")
+  )
+)
+
+(define-method write_stream
+  (of-object "HtmlDocument")
+  (c-name "html_document_write_stream")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "buffer")
+    '("gint" "len")
+  )
+)
+
+(define-method close_stream
+  (of-object "HtmlDocument")
+  (c-name "html_document_close_stream")
+  (return-type "none")
+)
+
+(define-method clear
+  (of-object "HtmlDocument")
+  (c-name "html_document_clear")
+  (return-type "none")
+)
+
+(define-method update_hover_node
+  (of-object "HtmlDocument")
+  (c-name "html_document_update_hover_node")
+  (return-type "none")
+  (parameters
+    '("DomNode*" "node")
+  )
+)
+
+(define-method update_active_node
+  (of-object "HtmlDocument")
+  (c-name "html_document_update_active_node")
+  (return-type "none")
+  (parameters
+    '("DomNode*" "node")
+  )
+)
+
+(define-method update_focus_element
+  (of-object "HtmlDocument")
+  (c-name "html_document_update_focus_element")
+  (return-type "none")
+  (parameters
+    '("DomElement*" "element")
+  )
+)
+
+(define-method find_anchor
+  (of-object "HtmlDocument")
+  (c-name "html_document_find_anchor")
+  (return-type "DomNode*")
+  (parameters
+    '("const-gchar*" "anchor")
+  )
+)
+
+
+;; -*- scheme -*-
+; object definitions ...
+(define-object Stream
+  (in-module "Html")
+  (parent "GObject")
+  (c-name "HtmlStream")
+  (gtype-id "HTML_TYPE_STREAM")
+)
+
+;; Enumerations and flags ...
+
+
+;; From /usr/include/gtkhtml-2.0/libgtkhtml/util/htmlstream.h
+
+(define-function html_stream_get_type
+  (c-name "html_stream_get_type")
+  (return-type "GType")
+)
+
+(define-function html_stream_new
+  (c-name "html_stream_new")
+  (is-constructor-of HtmlStream)
+  (parameters
+    '("HtmlStreamWriteFunc" "write_func")
+    '("HtmlStreamCloseFunc" "close_func")
+    '("gpointer" "user_data")
+  )
+)
+
+(define-method write
+  (of-object "HtmlStream")
+  (c-name "html_stream_write")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "buffer")
+    '("guint" "size")
+  )
+)
+
+(define-method close
+  (of-object "HtmlStream")
+  (c-name "html_stream_close")
+  (return-type "none")
+)
+
+(define-method destroy
+  (of-object "HtmlStream")
+  (c-name "html_stream_destroy")
+  (return-type "none")
+)
+
+(define-method get_written
+  (of-object "HtmlStream")
+  (c-name "html_stream_get_written")
+  (return-type "gint")
+)
+
+(define-method cancel
+  (of-object "HtmlStream")
+  (c-name "html_stream_cancel")
+  (return-type "none")
+)
+
+(define-method set_cancel_func
+  (of-object "HtmlStream")
+  (c-name "html_stream_set_cancel_func")
+  (return-type "none")
+  (parameters
+    '("HtmlStreamCancelFunc" "abort_func")
+    '("gpointer" "cancel_data")
+  )
+)
+
+(define-method get_mime_type
+  (of-object "HtmlStream")
+  (c-name "html_stream_get_mime_type")
+  (return-type "const-char*")
+)
+
+(define-method set_mime_type
+  (of-object "HtmlStream")
+  (c-name "html_stream_set_mime_type")
+  (return-type "none")
+  (parameters
+    '("const-char*" "mime_type")
+  )
+)
+
+

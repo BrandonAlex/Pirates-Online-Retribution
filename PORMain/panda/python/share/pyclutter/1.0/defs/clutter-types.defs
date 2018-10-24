@@ -1,0 +1,5 @@
+;; -*- scheme -*-
+;; THIS FILE IS GENERATED - DO NOT EDIT
+(include "clutter-base-types.defs")
+(include "clutter-1.2-types.defs")
+(include "clutter-1.4-types.defs")

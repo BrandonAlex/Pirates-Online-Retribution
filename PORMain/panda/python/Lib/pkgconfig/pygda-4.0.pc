@@ -1,0 +1,18 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+includedir=${prefix}/include
+datarootdir=${prefix}/share
+datadir=${datarootdir}
+pyexecdir=${exec_prefix}\Lib\site-packages
+
+# you can use the --variable=pygtkincludedir argument to
+# pkg-config to get this value.  You might want to use this to
+# install additional headers.
+pygtkincludedir=${includedir}/pygda-4.0
+
+
+Name: PyGDA
+Description: Python bindings for libgda
+Requires: pygobject-2.0 libgda-4.0
+Version: 2.29.1
+Cflags: -I${pygtkincludedir}

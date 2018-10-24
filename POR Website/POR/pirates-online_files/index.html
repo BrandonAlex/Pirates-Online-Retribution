@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- saved from url=(0638)http://dev-wix-languages.appspot.com/app/index.html?cacheKiller=1471646853401&compId=comp-ip5sznds&deviceType=desktop&instance=DWg0BMRZoPPOdY8-1zNYxZIuw4-Q2XxE0WgoFiX-nXI.eyJpbnN0YW5jZUlkIjoiYjIzYjdlOGItYWVkMC00MGNiLTg3ZjUtNDg0ZjE5OTdlNzFjIiwic2lnbkRhdGUiOiIyMDE2LTA4LTE5VDIyOjQ3OjI2Ljg3MloiLCJ1aWQiOm51bGwsImlwQW5kUG9ydCI6IjE3My4xNzMuNjEuMjkvMzg2MzgiLCJ2ZW5kb3JQcm9kdWN0SWQiOm51bGwsImRlbW9Nb2RlIjpmYWxzZSwiYWlkIjoiNDMxMzUxYWQtMzVhNi00YTAyLTkyMTAtOWUxMjA1M2YyYTJhIiwiYmlUb2tlbiI6IjQ0NzMxZWE5LTA5ZDctMGE2Ny0zNDY2LTUzODU0ZmFjYjhkZSIsInNpdGVPd25lcklkIjoiNGI5NDFiMTMtOGYwMy00MTljLWFhMTAtMDYzZjJlY2RhOTc3In0&locale=en&viewMode=site&width=403#/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style wix-style="" type="text/css">.Title{ font:normal normal normal 60px/1.1em "lucida console",lucida-console-w01,monospace; } .Menu{ font:normal normal normal 15px/1.1em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Page-title{ font:normal normal bold 50px/1.1em impact,impact-w01-2010,impact-w02-2010,impact-w10-2010,sans-serif; } .Heading-XL{ font:normal normal normal 60px/1.1em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Heading-L{ font:normal normal normal 40px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Heading-M{ font:normal normal normal 31px/1.2em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Heading-S{ font:normal normal normal 24px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Body-L{ font:normal normal normal 16px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Body-M{ font:normal normal normal 14px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Body-S{ font:normal normal normal 12px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } .Body-XS{ font:normal normal normal 11px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; } }</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+
+  
+  <!--<base target="_parent">--><base href="." target="_parent">
+  <title>App</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="./f1b758a5.app.css">
+  <!--@formatter:off-->
+  <style wix-style="" type="text/css">
+    body {
+    background-color: rgba(0,0,0,1);
+    }
+    .app {
+    border-color: rgba(0,0,0,0);
+    }
+    .separator {
+    border-color: #000000;
+    }
+    language {
+    font:normal normal normal 14px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;;
+    color: #FFFFFF;
+    }
+    language:hover {
+    font:normal normal normal 14px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif; ;
+    color: #A90000;
+    }
+    .language-selected {
+    font:normal normal normal 14px/1.3em tahoma,tahoma-w01-regular,tahoma-w02-regular,tahoma-w10-regular,tahoma-w15--regular,tahoma-w99-regular,sans-serif;;
+    color: #FF0000;
+    }
+  </style>
+  <!--@formatter:on-->
+  <script type="text/javascript" src="./wix.min.js"></script>
+<script data-type="injected" src="./content_site"></script><link type="text/css" rel="stylesheet" href="./latin(1).css"></head>
+<body data-ng-app="wixApp" class="ng-scope">
+
+<!-- ngView:  --><div class="app ng-scope" data-ng-view=""><div id="languages-list" class="ng-scope">
+  <span class="allign-middle"></span>
+  <!-- ngRepeat: language in params.siteLanguages --><language ng-click="navigateToHomeLanguagePage(language)" class="separator ng-scope ng-isolate-scope language-selected" ng-repeat="language in params.siteLanguages" ng-class="{&#39;language-selected&#39;: isLanguagesEqual(language, selectedSiteLanguage),
+                     &#39;language-bold&#39;: params.languageNameFontStyle.bold,
+                     &#39;language-italic&#39;: params.languageNameFontStyle.italic,
+                     &#39;language-hover-bold&#39;: params.languageHoverFontStyle.bold,
+                     &#39;language-hover-italic&#39;: params.languageHoverFontStyle.italic,
+                     &#39;language-selected-bold&#39;: params.currentLanguageFontStyle.bold,
+                     &#39;language-selected-italic&#39;: params.currentLanguageFontStyle.italic}" language="language" showflags="params.showFlags" showname="params.showLanguageName"><div style="display: inline-block">
+  <img ng-show="showFlags" ng-src="images/flags/usa.png" src="./usa.png">
+<span ng-show="showName">
+  <span ng-show="language.language.nativeName" class="ng-binding ng-hide"></span>
+  <span ng-show="!language.language.nativeName" class="ng-binding">English (USA)</span>
+</span>
+<span ng-show="!showName" class="ng-hide">
+  <span class="ng-binding">EN</span>
+</span>
+</div></language><!-- end ngRepeat: language in params.siteLanguages --><language ng-click="navigateToHomeLanguagePage(language)" class="separator ng-scope ng-isolate-scope" ng-repeat="language in params.siteLanguages" ng-class="{&#39;language-selected&#39;: isLanguagesEqual(language, selectedSiteLanguage),
+                     &#39;language-bold&#39;: params.languageNameFontStyle.bold,
+                     &#39;language-italic&#39;: params.languageNameFontStyle.italic,
+                     &#39;language-hover-bold&#39;: params.languageHoverFontStyle.bold,
+                     &#39;language-hover-italic&#39;: params.languageHoverFontStyle.italic,
+                     &#39;language-selected-bold&#39;: params.currentLanguageFontStyle.bold,
+                     &#39;language-selected-italic&#39;: params.currentLanguageFontStyle.italic}" language="language" showflags="params.showFlags" showname="params.showLanguageName"><div style="display: inline-block">
+  <img ng-show="showFlags" ng-src="images/flags/spain.png" src="./spain.png">
+<span ng-show="showName">
+  <span ng-show="language.language.nativeName" class="ng-binding">Español</span>
+  <span ng-show="!language.language.nativeName" class="ng-binding ng-hide">Spanish (SPAIN)</span>
+</span>
+<span ng-show="!showName" class="ng-hide">
+  <span class="ng-binding">ES</span>
+</span>
+</div></language><!-- end ngRepeat: language in params.siteLanguages --><language ng-click="navigateToHomeLanguagePage(language)" class="separator ng-scope ng-isolate-scope" ng-repeat="language in params.siteLanguages" ng-class="{&#39;language-selected&#39;: isLanguagesEqual(language, selectedSiteLanguage),
+                     &#39;language-bold&#39;: params.languageNameFontStyle.bold,
+                     &#39;language-italic&#39;: params.languageNameFontStyle.italic,
+                     &#39;language-hover-bold&#39;: params.languageHoverFontStyle.bold,
+                     &#39;language-hover-italic&#39;: params.languageHoverFontStyle.italic,
+                     &#39;language-selected-bold&#39;: params.currentLanguageFontStyle.bold,
+                     &#39;language-selected-italic&#39;: params.currentLanguageFontStyle.italic}" language="language" showflags="params.showFlags" showname="params.showLanguageName"><div style="display: inline-block">
+  <img ng-show="showFlags" ng-src="images/flags/germany.png" src="./germany.png">
+<span ng-show="showName">
+  <span ng-show="language.language.nativeName" class="ng-binding">Deutsch</span>
+  <span ng-show="!language.language.nativeName" class="ng-binding ng-hide">German (GERMANY)</span>
+</span>
+<span ng-show="!showName" class="ng-hide">
+  <span class="ng-binding">DE</span>
+</span>
+</div></language><!-- end ngRepeat: language in params.siteLanguages --><language ng-click="navigateToHomeLanguagePage(language)" class="separator ng-scope ng-isolate-scope" ng-repeat="language in params.siteLanguages" ng-class="{&#39;language-selected&#39;: isLanguagesEqual(language, selectedSiteLanguage),
+                     &#39;language-bold&#39;: params.languageNameFontStyle.bold,
+                     &#39;language-italic&#39;: params.languageNameFontStyle.italic,
+                     &#39;language-hover-bold&#39;: params.languageHoverFontStyle.bold,
+                     &#39;language-hover-italic&#39;: params.languageHoverFontStyle.italic,
+                     &#39;language-selected-bold&#39;: params.currentLanguageFontStyle.bold,
+                     &#39;language-selected-italic&#39;: params.currentLanguageFontStyle.italic}" language="language" showflags="params.showFlags" showname="params.showLanguageName"><div style="display: inline-block">
+  <img ng-show="showFlags" ng-src="images/flags/france.png" src="./france.png">
+<span ng-show="showName">
+  <span ng-show="language.language.nativeName" class="ng-binding">Français</span>
+  <span ng-show="!language.language.nativeName" class="ng-binding ng-hide">French (FRANCE)</span>
+</span>
+<span ng-show="!showName" class="ng-hide">
+  <span class="ng-binding">FR</span>
+</span>
+</div></language><!-- end ngRepeat: language in params.siteLanguages -->
+</div></div>
+
+<script src="./jquery.min.js"></script>
+<script src="./angular.min.js"></script>
+<script src="./angular-route.min.js"></script>
+
+<script src="./282a58c7.app.js"></script>
+
+
+<div style="position:fixed; top:0; left:0; overflow:hidden;"><input style="position:absolute; left:-300px;" type="text" value="" id="focus_retriever" readonly="true"></div></body></html>

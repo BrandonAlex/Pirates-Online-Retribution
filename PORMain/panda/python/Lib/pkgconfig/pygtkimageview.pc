@@ -1,0 +1,7 @@
+prefix=
+
+Name: pygtkimageview
+Description: Python bindings for the GTK+ GtkImageView widget
+Version: 1.2.0
+Requires: gtkimageview
+

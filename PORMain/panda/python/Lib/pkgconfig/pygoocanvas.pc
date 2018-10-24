@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+
+Name: PyGooCanvas
+Description: Python bindings for GooCanvas
+Version: 0.14.1
+Requires: pygtk-2.0
+
